@@ -990,7 +990,7 @@ const ContactSection = () => {
     const formData = new FormData(form);
     
     try {
-      const response = await fetch("https://formspree.io/f/mahatavrastogi97@gmail.com", {
+      const response = await fetch("https://formspree.io/mahatavrastogi97@gmail.com", {
         method: "POST",
         body: formData,
         headers: {
