@@ -990,15 +990,14 @@ const ContactSection = () => {
     const formData = new FormData(form);
     
     try {
-      const response = await fetch("https://formspree.io/mahatavrastogi97@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/mahatavrastogi97@gmail.com", {
         method: "POST",
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
       });
       
-      if (response.ok) {
+      const result = await response.json();
+      
+      if (response.ok && result.success === "true") {
         setStatus("success");
         form.reset();
         setTimeout(() => setStatus("idle"), 5000);
@@ -1146,22 +1145,24 @@ export default function App() {
       const sections = ['home', 'about', 'showreel', 'portfolio', 'contact'];
       let current = 'home';
       
+      // Calculate which section is most visible in the top third of the viewport
+      const viewportHeight = window.innerHeight;
+      const threshold = viewportHeight * 0.4; // 40% threshold
+
       for (const id of sections) {
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          // Use a stricter threshold for the first section and a more permissive one for others
-          if (id === 'home') {
-            if (rect.bottom > window.innerHeight / 2) {
-              current = 'home';
-            }
-          } else {
-            // If the section top has reached the top 30% of screen
-            if (rect.top <= window.innerHeight * 0.3) {
-              current = id;
-            }
+          // If the top of the section has reached the threshold, or if it's the last section and we're at the bottom
+          if (rect.top <= threshold) {
+            current = id;
           }
         }
+      }
+
+      // Special case: if we are at the very top, always home
+      if (window.scrollY < 50) {
+        current = 'home';
       }
       
       if (activeSection !== current) {
