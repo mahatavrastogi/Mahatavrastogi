@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", sans-serif;
+  --color-accent: #ffb400;
+  --color-base-dark: #111111;
+  --color-surface: #252525;
+  --color-border: #333333;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    cursor: none;
+    @apply transition-colors duration-500;
+  }
+
+  body {
+    @apply bg-base-dark text-white font-sans overflow-x-hidden cursor-none;
+    --color-text-primary: 255, 255, 255;
+  }
+
+  body.light {
+    --color-base-dark: #ffffff;
+    --color-surface: #f5f5f5;
+    --color-border: #e5e5e5;
+    @apply bg-white text-[#666];
+  }
+
+  body.light h1, body.light h2, body.light h3, body.light h4, body.light h5, body.light h6 {
+    @apply text-[#222];
+  }
+
+  /* Force white text/bg/borders to be readable in light mode */
+  body.light .text-white { color: #111 !important; }
+  body.light .text-white\/90 { color: #222 !important; }
+  body.light .text-white\/80 { color: #333 !important; }
+  body.light .text-white\/70 { color: #444 !important; }
+  body.light .text-white\/60 { color: #555 !important; }
+  body.light .text-white\/50 { color: #666 !important; }
+  body.light .text-white\/40 { color: #777 !important; }
+  body.light .text-white\/30 { color: #888 !important; }
+  body.light .text-white\/20 { color: #999 !important; }
+  body.light .text-white\/10 { color: #aaaaaa !important; }
+  body.light .text-white\/5 { color: #bbbbbb !important; }
+  
+  body.light .border-white\/20 { @apply border-black/20; }
+  body.light .border-white\/10 { @apply border-black/10; }
+  body.light .border-white\/5 { @apply border-black/5; }
+  
+  body.light .bg-surface { background-color: #eeeeee !important; }
+  body.light .bg-\[\#111111\] { background-color: #ffffff !important; }
+  body.light .bg-\[\#111\] { background-color: #f5f5f5 !important; }
+  body.light .bg-\[\#252525\] { background-color: #eeeeee !important; }
+  
+  body.light .before\:bg-white\/20::before { @apply bg-black/20; }
+  body.light .placeholder\:text-white\/30::placeholder { @apply text-black/30; }
+  body.light .bg-accent .text-black { color: #000000 !important; } /* Maintain black on yellow */
+  body.light .group-hover\:text-black:hover { color: #000000 !important; }
+
+  /* Input fields specific overrides for Tunis style */
+  body.light input, body.light textarea {
+    background-color: #eeeeee !important;
+    color: #111 !important;
+  }
+  body.light input::placeholder, body.light textarea::placeholder {
+    color: #999 !important;
+  }
+
+  a, button, [role="button"], .cursor-pointer {
+    cursor: none !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display transition-colors duration-500;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 0px; 
+  }
+}
+
+@layer utilities {
+  .section-title-bg {
+    @apply text-4xl sm:text-[5rem] md:text-[8rem] font-black text-white/[0.04] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 uppercase select-none tracking-[5px] sm:tracking-[10px] w-full text-center transition-colors duration-500 overflow-hidden line-clamp-1 whitespace-nowrap;
+  }
+
+  body.light .section-title-bg {
+    @apply text-black/[0.04];
+  }
+  
+  .section-title {
+    @apply relative z-10 text-2xl sm:text-4xl md:text-6xl font-black uppercase text-center py-10 sm:py-20 tracking-tighter sm:tracking-normal;
+  }
+  
+  .section-title span {
+    @apply text-accent;
+  }
+
+  .nav-bullet {
+    @apply w-12 h-12 rounded-full bg-[#2b2a2a] flex items-center justify-end pr-[14px] hover:bg-accent transition-all duration-300 relative cursor-pointer overflow-hidden border-none outline-none;
+  }
+
+  body.light .nav-bullet {
+    @apply bg-[#eeeeee];
+  }
+
+  body.light .nav-bullet.active, body.light .nav-bullet:hover {
+    @apply bg-accent;
+  }
+  
+  .nav-bullet.active {
+    @apply bg-accent;
+  }
+  
+  .nav-bullet:hover {
+    @apply bg-accent;
+  }
+
+  .nav-bullet .nav-label {
+    @apply text-white font-bold uppercase text-[12px] tracking-widest opacity-0 max-w-0 transition-all duration-300 whitespace-nowrap overflow-hidden translate-x-4;
+  }
+
+  body.light .nav-bullet .nav-label {
+    @apply text-[#444];
+  }
+
+  @media (min-width: 1024px) {
+    .nav-bullet:hover {
+      @apply w-[120px] rounded-[30px] items-center px-4 pr-[14px];
+    }
+    
+    .nav-bullet:hover .nav-label {
+      @apply opacity-100 max-w-[80px] mr-2 translate-x-0;
+    }
+  }
+
+  .nav-bullet.active .nav-icon, .nav-bullet:hover .nav-icon {
+    @apply text-white;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .nav-bullet.active .nav-label, .nav-bullet:hover .nav-label {
+    @apply text-white;
+  }
+
+  body.light .nav-bullet.active .nav-icon, body.light .nav-bullet:hover .nav-icon {
+    @apply text-white;
+  }
+  
+  body.light .nav-bullet.active .nav-label {
+    @apply text-white;
+  }
+
+  .nav-bullet .nav-icon {
+    @apply flex items-center justify-center min-w-[20px] transition-colors duration-300;
+  }
+
+  body.light .nav-bullet .nav-icon {
+    @apply text-[#444];
+  }
+
+  .timeline-item {
+    @apply relative pl-16 pb-12 transition-colors duration-500;
+  }
+
+  .timeline-item::before {
+    content: '';
+    @apply absolute left-5 top-0 w-[1px] h-full bg-[#333];
+  }
+
+  body.light .timeline-item::before {
+    @apply bg-[#eee];
+  }
+
+  .timeline-icon {
+    @apply absolute left-0 top-0 w-10 h-10 rounded-full bg-accent flex items-center justify-center z-10 text-black;
+  }
+
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/90 backdrop-blur-sm z-[1000] flex items-center justify-center p-4 md:p-10;
+  }
+
+  .modal-content {
+    @apply bg-[#111111] w-full max-w-6xl h-full overflow-y-auto rounded-3xl relative border border-white/5 transition-colors duration-500;
+  }
+
+  body.light .modal-content {
+    @apply bg-white border-black/5;
+  }
+
+  .circle-progress {
+    @apply relative flex items-center justify-center;
+  }
+
+  .circle-progress svg {
+    @apply absolute inset-0 -rotate-90;
+  }
+
+  .circle-progress circle {
+    @apply fill-none stroke-[8] transition-all duration-1000;
+  }
+
+  .circle-progress .bg {
+    @apply stroke-[#252525];
+  }
+
+  body.light .circle-progress .bg {
+    @apply stroke-[#eee];
+  }
+
+  .circle-progress .fill {
+    @apply stroke-accent;
+  }
+
+  /* Theme Switcher Styles */
+  .theme-toggle {
+    @apply w-12 h-12 rounded-full bg-[#2b2a2a] flex items-center justify-center text-white hover:bg-accent hover:text-white transition-all shadow-lg cursor-pointer border-none outline-none;
+  }
+
+  body.light .theme-toggle {
+    @apply bg-[#eeeeee] text-[#444];
+  }
+
+  body.light .theme-toggle:hover {
+    @apply text-white;
+  }
+
+  @keyframes scan {
+    0% { top: -20%; }
+    100% { top: 120%; }
+  }
+
+  .animate-scan {
+    animation: scan 3s linear infinite;
+  }
+}
