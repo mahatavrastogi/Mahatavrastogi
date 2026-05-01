@@ -677,20 +677,8 @@ const ShowreelSection = () => {
             </div>
           </div>
 
-          {/* Minimal Indicators with Integrated Navigation for Mobile/Tablet */}
+          {/* Minimal Indicators for Mobile/Tablet */}
           <div className="flex lg:hidden justify-center items-center gap-4 mt-4">
-            <button 
-              onClick={() => {
-                const newIndex = (currentIndex - 1 + videos.length) % videos.length;
-                setCurrentIndex(newIndex);
-                document.getElementById('thumbnail-strip')?.scrollBy({ left: -100, behavior: 'smooth' });
-              }}
-              className="w-8 h-8 rounded-full bg-white/5 border border-white/10 text-accent flex items-center justify-center shadow-lg active:scale-95 transition-all"
-              aria-label="Previous video"
-            >
-              <ChevronLeft size={16} strokeWidth={3} />
-            </button>
-
             <div className="flex gap-1.5">
               {videos.map((_, i) => (
                 <div 
@@ -699,18 +687,6 @@ const ShowreelSection = () => {
                 />
               ))}
             </div>
-
-            <button 
-              onClick={() => {
-                const newIndex = (currentIndex + 1) % videos.length;
-                setCurrentIndex(newIndex);
-                document.getElementById('thumbnail-strip')?.scrollBy({ left: 100, behavior: 'smooth' });
-              }}
-              className="w-8 h-8 rounded-full bg-white/5 border border-white/10 text-accent flex items-center justify-center shadow-lg active:scale-95 transition-all"
-              aria-label="Next video"
-            >
-              <ChevronRight size={16} strokeWidth={3} />
-            </button>
           </div>
         </div>
       </div>
