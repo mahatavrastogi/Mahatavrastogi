@@ -120,11 +120,14 @@ const Modal = ({ isOpen, onClose, children }: { isOpen: boolean, onClose: () => 
         >
           <button 
             onClick={onClose}
-            className="absolute top-6 right-6 w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-accent transition-all z-[1100]"
+            className="absolute top-20 right-4 sm:top-6 sm:right-6 w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-[#111] flex items-center justify-center hover:bg-accent hover:text-black transition-all z-[1100] shadow-[0_0_20px_rgba(0,0,0,0.5)] cursor-pointer"
+            aria-label="Close modal"
           >
-            <X size={24} />
+            <X size={24} className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
-          {children}
+          <div className="flex-1 overflow-y-auto w-full h-full">
+            {children}
+          </div>
         </motion.div>
       </motion.div>
     )}
@@ -249,7 +252,7 @@ const HomeSection = ({ onOpenAbout, theme }: { onOpenAbout: () => void, theme: s
           <img 
             src="https://lh3.googleusercontent.com/d/1D-OAAxBPA6jVyJGtogfHz6SXe3-zB8_d" 
             alt="Profile" 
-            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+            className="w-full h-full object-cover lg:grayscale lg:hover:grayscale-0 transition-all duration-700"
           />
         </motion.div>
       </div>
@@ -289,7 +292,7 @@ const HomeSection = ({ onOpenAbout, theme }: { onOpenAbout: () => void, theme: s
     </div>
 
     {/* Scroll to Explore Indicator */}
-    <div className="absolute bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none z-20">
+    <div className="scroll-indicator absolute bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none z-20">
       <div className="w-6 h-10 border-2 border-accent rounded-full flex justify-center p-1">
         <motion.div 
           animate={{ y: [0, 12, 0] }}
@@ -326,7 +329,7 @@ const SkillCircle = ({ name, percent, logo }: { name: string, percent: number, l
         <img 
           src={logo} 
           alt={name} 
-          className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" 
+          className="w-full h-full object-contain filter lg:grayscale lg:group-hover:grayscale-0 transition-all duration-500" 
           referrerPolicy="no-referrer"
         />
       </div>
@@ -375,7 +378,7 @@ const AboutContent = ({ theme }: { theme: string }) => {
   ];
 
   return (
-    <div className="py-8 lg:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+    <div className="pt-20 pb-8 lg:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
       <div className="relative mb-6 lg:mb-16 text-left">
         <h2 className="section-title-bg opacity-5 hidden lg:block">Resume</h2>
         <h2 className="section-title text-left !py-4 lg:!py-10">About <span>Me</span></h2>

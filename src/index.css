@@ -192,7 +192,7 @@
   }
 
   .modal-content {
-    @apply bg-[#111111] w-full max-w-6xl h-full overflow-y-auto rounded-3xl relative border border-white/5 transition-colors duration-500;
+    @apply bg-[#111111] w-full max-w-6xl h-full rounded-3xl relative border border-white/5 transition-colors duration-500 overflow-hidden flex flex-col;
   }
 
   body.light .modal-content {
@@ -243,5 +243,36 @@
 
   .animate-scan {
     animation: scan 3s linear infinite;
+  }
+
+  /* Landscape Orientation Specific Fixes */
+  @media (orientation: landscape) and (max-height: 600px) {
+    #home .pb-32 {
+      @apply !pb-8;
+    }
+    
+    #home .mt-16 {
+      @apply !mt-8;
+    }
+
+    #home p {
+      @apply !mb-4; /* Reduce paragraph margin in landscape */
+    }
+
+    .scroll-indicator {
+      @apply !bottom-2 scale-75;
+    }
+
+    .modal-content button[aria-label="Close modal"] {
+      @apply !top-4 !right-24; /* Shift further left to avoid overlapping with theme toggle */
+    }
+
+    .section-title {
+      @apply !py-6;
+    }
+    
+    .section-title-bg {
+      @apply hidden; /* Hide background title in small landscape to save space */
+    }
   }
 }
