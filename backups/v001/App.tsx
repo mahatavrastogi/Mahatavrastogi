@@ -1,5 +1,4 @@
 import { motion, useMotionValue, useSpring } from "motion/react";
-import comfyUiLogo from "./assets/images/comfyui_logo_1782898588325.jpg";
 import { 
   Home as HomeIcon, 
   User, 
@@ -21,7 +20,7 @@ import {
   ChevronLeft,
   ChevronRight
 } from "lucide-react";
-import { useState, useEffect, useRef, ReactNode, FormEvent, useMemo } from "react";
+import { useState, useEffect, useRef, ReactNode, FormEvent } from "react";
 import { AnimatePresence } from "motion/react";
 
 // --- Nav Config ---
@@ -312,21 +311,9 @@ const HomeSection = ({ onOpenAbout, theme }: { onOpenAbout: () => void, theme: s
   </section>
 );
 
-const SkillCircle = ({ 
-  name, 
-  percent, 
-  logo, 
-  sizeClass = "w-16 h-16 sm:w-24 sm:h-24", 
-  paddingClass = "p-3 sm:p-5" 
-}: { 
-  name: string, 
-  percent: number, 
-  logo: string, 
-  sizeClass?: string, 
-  paddingClass?: string 
-}) => (
+const SkillCircle = ({ name, percent, logo }: { name: string, percent: number, logo: string }) => (
   <div className="flex flex-col items-center group">
-    <div className={`circle-progress mb-3 sm:mb-6 relative group-hover:scale-105 transition-transform duration-500 ${sizeClass}`}>
+    <div className="circle-progress mb-3 sm:mb-6 relative group-hover:scale-105 transition-transform duration-500 w-[62px] h-[62px] sm:w-32 sm:h-32">
       <svg className="w-full h-full" viewBox="0 0 128 128">
         <circle className="bg" cx="64" cy="64" r="54" />
         <circle 
@@ -338,7 +325,7 @@ const SkillCircle = ({
           strokeDashoffset={339.292 - (339.292 * percent) / 100}
         />
       </svg>
-      <div className={`absolute inset-0 flex items-center justify-center ${paddingClass}`}>
+      <div className="absolute inset-0 flex items-center justify-center p-3.5 sm:p-8">
         <img 
           src={logo} 
           alt={name} 
@@ -347,7 +334,7 @@ const SkillCircle = ({
         />
       </div>
     </div>
-    <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[1px] text-center text-white/40 group-hover:text-accent transition-colors">{name}</p>
+    <p className="text-[10px] sm:text-sm font-bold uppercase tracking-[1px] text-center text-white/40 group-hover:text-accent transition-colors">{name}</p>
   </div>
 );
 
@@ -397,100 +384,100 @@ const AboutContent = ({ theme }: { theme: string }) => {
         <h2 className="section-title text-left !py-4 lg:!py-10">About <span>Me</span></h2>
       </div>
 
-      {/* Personal Details Section */}
-      <div className="w-full flex flex-col items-start text-left mb-16 lg:mb-24">
-        <h3 className="text-xl lg:text-3xl font-black uppercase mb-6 lg:mb-12 relative inline-block whitespace-nowrap">
-          Personal Details
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3 sm:gap-y-8 text-[13px] sm:text-[15px] font-semibold text-left w-full">
-          <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
-            <span className="text-white/40 uppercase text-[9px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">First Name:</span>
-            <span className="text-white font-black truncate">Mahatav</span>
+      <div className="mb-12 lg:mb-24 flex flex-col items-start text-left">
+        <div className="max-w-4xl w-full">
+          <h3 className="text-xl lg:text-3xl font-black uppercase mb-6 lg:mb-12 relative inline-block whitespace-nowrap">
+            Personal Details
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3 sm:gap-y-8 text-[13px] sm:text-[15px] font-semibold text-left">
+            <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
+              <span className="text-white/40 uppercase text-[9px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">First Name:</span>
+              <span className="text-white font-black truncate">Mahatav</span>
+            </div>
+            <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
+              <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">Last Name:</span>
+              <span className="text-white font-black truncate">Rastogi</span>
+            </div>
+            <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
+              <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">Age:</span>
+              <span className="text-white font-black truncate">28 Years</span>
+            </div>
+            <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
+              <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">Nationality:</span>
+              <span className="text-white font-black truncate">Indian</span>
+            </div>
+            <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
+              <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">Mobile:</span>
+              <span className="text-accent font-black truncate">+91 9621653604</span>
+            </div>
+            <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
+              <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">Address:</span>
+              <span className="text-white font-black truncate">Pune, Maharashtra, India</span>
+            </div>
+            <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
+              <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">LinkedIn:</span>
+              <a href="https://linkedin.com/in/mahatav-rastogi" target="_blank" rel="noreferrer" className="text-white font-black hover:text-accent transition-colors truncate">mahatav-rastogi</a>
+            </div>
+            <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
+              <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-24 shrink-0">Email:</span>
+              <a href="mailto:mahatavrastogi97@gmail.com" className="text-white font-black hover:text-accent transition-colors truncate">mahatavrastogi97@gmail.com</a>
+            </div>
           </div>
-          <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
-            <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">Last Name:</span>
-            <span className="text-white font-black truncate">Rastogi</span>
+          
+          <div className="mt-16 flex justify-center">
+            <a 
+              href="https://drive.google.com/file/d/15AEeKEP75brGswY5E5_eJMjZTjhiQaoe/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-8 px-10 py-4 border-[1px] border-accent rounded-full text-sm font-black uppercase tracking-[2px] hover:bg-accent hover:text-black transition-all"
+            >
+              Download CV 
+              <span className="bg-accent p-3 rounded-full text-black group-hover:bg-white transition-colors">
+                <Download size={18} />
+              </span>
+            </a>
           </div>
-          <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
-            <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">Age:</span>
-            <span className="text-white font-black truncate">28 Years</span>
-          </div>
-          <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
-            <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">Nationality:</span>
-            <span className="text-white font-black truncate">Indian</span>
-          </div>
-          <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
-            <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">Mobile:</span>
-            <span className="text-accent font-black truncate">+91 9621653604</span>
-          </div>
-          <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
-            <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">Address:</span>
-            <span className="text-white font-black truncate">Pune, Maharashtra, India</span>
-          </div>
-          <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
-            <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-28 shrink-0">LinkedIn:</span>
-            <a href="https://linkedin.com/in/mahatav-rastogi" target="_blank" rel="noreferrer" className="text-white font-black hover:text-accent transition-colors truncate">www.linkedin.com/in/mahatav-rastogi</a>
-          </div>
-          <div className="flex flex-row items-center gap-3 border-b border-white/5 pb-2">
-            <span className="text-white/40 uppercase text-[8px] sm:text-[10px] tracking-widest font-black w-20 sm:w-24 shrink-0">Email:</span>
-            <a href="mailto:mahatavrastogi97@gmail.com" className="text-white font-black hover:text-accent transition-colors truncate">mahatavrastogi97@gmail.com</a>
-          </div>
-        </div>
-        
-        <div className="mt-12 flex justify-center w-full">
-          <a 
-            href="https://drive.google.com/file/d/15AEeKEP75brGswY5E5_eJMjZTjhiQaoe/view?usp=sharing"
-            target="_blank"
-            rel="noreferrer"
-            className="group inline-flex items-center gap-8 px-10 py-4 border-[1px] border-accent rounded-full text-sm font-black uppercase tracking-[2px] hover:bg-accent hover:text-black transition-all"
-          >
-            Download CV 
-            <span className="bg-accent p-3 rounded-full text-black group-hover:bg-white transition-colors">
-              <Download size={18} />
-            </span>
-          </a>
         </div>
       </div>
 
-      <hr className="border-white/5 mb-16 lg:mb-24" />
+      <hr className="border-white/5 mb-32" />
 
-      {/* My Stats Section */}
-      <div className="w-full flex flex-col items-start text-left mb-16 lg:mb-24">
-        <h3 className="text-xl lg:text-3xl font-black uppercase mb-6 lg:mb-12 relative inline-block whitespace-nowrap">
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div>
+      <div className="mb-10 text-left lg:mb-16">
+        <h3 className="text-2xl lg:text-3xl font-black uppercase relative inline-block">
+          My Skills
+        </h3>
+      </div>
+      <div className="grid grid-cols-4 gap-x-1 sm:gap-10 gap-y-6 sm:gap-y-10">
+        <SkillCircle name="Nuke" percent={95} logo="https://img.icons8.com/color/512/nuke.png" />
+        <SkillCircle name="After Effects" percent={89} logo="https://img.icons8.com/color/512/adobe-after-effects--v1.png" />
+        <SkillCircle name="Premiere Pro" percent={92} logo="https://img.icons8.com/color/512/adobe-premiere-pro--v1.png" />
+        <SkillCircle name="Photoshop" percent={88} logo="https://img.icons8.com/color/512/adobe-photoshop--v1.png" />
+        <SkillCircle name="Maya" percent={70} logo="https://img.icons8.com/color/512/autodesk-maya.png" />
+        <SkillCircle name="3ds Max" percent={88} logo="https://img.icons8.com/color/512/autodesk-3ds-max.png" />
+        <SkillCircle name="Houdini" percent={75} logo="https://lh3.googleusercontent.com/d/1gUVzU42ENlwl9aZU3-l7deFOj7gof4u6" />
+        <SkillCircle name="CorelDraw" percent={85} logo="https://lh3.googleusercontent.com/d/1_YEbYQuUHgwxeXSy3daJg0zT81jiKpYn" />
+      </div>
+    </div>
+
+    <div className="mt-12 lg:mt-0">
+      <div className="mb-10 text-left lg:mb-16">
+        <h3 className="text-2xl lg:text-3xl font-black uppercase relative inline-block whitespace-nowrap">
           My Stats
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full">
-          {stats.map((s, i) => (
-            <div key={i} className={`p-4 sm:p-8 rounded-2xl border border-white/10 hover:border-accent/40 transition-all duration-500 shadow-2xl relative overflow-hidden group ${theme === 'light' ? 'bg-[#f5f5f5]' : 'bg-[#111]'}`}>
-              <div className="absolute -right-4 -bottom-4 w-12 sm:w-24 h-12 sm:h-24 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-all"></div>
-              <h4 className="text-2xl sm:text-4xl font-black text-accent mb-1 sm:mb-2 relative z-10">{s.val}</h4>
-              <p className="text-[8px] sm:text-[10px] uppercase font-black tracking-[1px] sm:tracking-[2px] leading-relaxed relative pl-4 sm:pl-8 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-3 sm:before:w-5 before:h-[2px] before:bg-accent/40 text-white/50 z-10 group-hover:text-white transition-colors">
-                {s.label}
-              </p>
-            </div>
-          ))}
-        </div>
       </div>
-
-      <hr className="border-white/5 mb-16 lg:mb-24" />
-
-      {/* Full-Width My Skills Section */}
-      <div className="w-full text-left mb-16 lg:mb-24">
-        <div className="mb-10 lg:mb-16">
-          <h3 className="text-2xl lg:text-3xl font-black uppercase relative inline-block">
-            My Skills
-          </h3>
-        </div>
-        <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-x-4 sm:gap-x-8 gap-y-8 sm:gap-y-12 justify-items-center">
-          <SkillCircle name="Comfy UI" percent={95} logo="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/comfyui-icon.png" sizeClass="w-[72px] h-[72px] sm:w-28 sm:h-28" paddingClass="p-3.5 sm:p-5" />
-          <SkillCircle name="Nuke" percent={95} logo="https://img.icons8.com/color/512/nuke.png" sizeClass="w-[72px] h-[72px] sm:w-28 sm:h-28" paddingClass="p-3.5 sm:p-5" />
-          <SkillCircle name="After Effects" percent={89} logo="https://img.icons8.com/color/512/adobe-after-effects--v1.png" sizeClass="w-[72px] h-[72px] sm:w-28 sm:h-28" paddingClass="p-3.5 sm:p-5" />
-          <SkillCircle name="Premiere Pro" percent={92} logo="https://img.icons8.com/color/512/adobe-premiere-pro--v1.png" sizeClass="w-[72px] h-[72px] sm:w-28 sm:h-28" paddingClass="p-3.5 sm:p-5" />
-          <SkillCircle name="Photoshop" percent={88} logo="https://img.icons8.com/color/512/adobe-photoshop--v1.png" sizeClass="w-[72px] h-[72px] sm:w-28 sm:h-28" paddingClass="p-3.5 sm:p-5" />
-          <SkillCircle name="Maya" percent={70} logo="https://img.icons8.com/color/512/autodesk-maya.png" sizeClass="w-[72px] h-[72px] sm:w-28 sm:h-28" paddingClass="p-3.5 sm:p-5" />
-          <SkillCircle name="3ds Max" percent={88} logo="https://img.icons8.com/color/512/autodesk-3ds-max.png" sizeClass="w-[72px] h-[72px] sm:w-28 sm:h-28" paddingClass="p-3.5 sm:p-5" />
-          <SkillCircle name="Houdini" percent={75} logo="https://lh3.googleusercontent.com/d/1gUVzU42ENlwl9aZU3-l7deFOj7gof4u6" sizeClass="w-[72px] h-[72px] sm:w-28 sm:h-28" paddingClass="p-3.5 sm:p-5" />
-          <SkillCircle name="CorelDraw" percent={85} logo="https://lh3.googleusercontent.com/d/1_YEbYQuUHgwxeXSy3daJg0zT81jiKpYn" sizeClass="w-[72px] h-[72px] sm:w-28 sm:h-28" paddingClass="p-3.5 sm:p-5" />
+          <div className="grid grid-cols-2 gap-4 sm:gap-6">
+            {stats.map((s, i) => (
+              <div key={i} className={`p-4 sm:p-8 rounded-2xl border border-white/10 hover:border-accent/40 transition-all duration-500 shadow-2xl relative overflow-hidden group ${theme === 'light' ? 'bg-[#f5f5f5]' : 'bg-[#111]'}`}>
+                <div className="absolute -right-4 -bottom-4 w-12 sm:w-24 h-12 sm:h-24 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-all"></div>
+                <h4 className="text-2xl sm:text-4xl font-black text-accent mb-1 sm:mb-2 relative z-10">{s.val}</h4>
+                <p className="text-[8px] sm:text-[10px] uppercase font-black tracking-[1px] sm:tracking-[2px] leading-relaxed relative pl-4 sm:pl-8 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-3 sm:before:w-5 before:h-[2px] before:bg-accent/40 text-white/50 z-10 group-hover:text-white transition-colors">
+                  {s.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -720,7 +707,7 @@ const PortfolioSection = () => {
       featured: true
     },
     { 
-      title: "Citadel Honey Bunny", 
+      title: "Citadel Haney Bunny", 
       category: "Episodic (OTT)", 
       youtubeId: "ZQuuw18Yicw",
       featured: true
@@ -730,11 +717,6 @@ const PortfolioSection = () => {
       category: "Episodic (OTT)", 
       youtubeId: "4oQeQR1DEjw",
       featured: true
-    },
-    { 
-      title: "Brazil '70: The Third Star", 
-      category: "Episodic (OTT)", 
-      youtubeId: "EzOpCMbRP-s" 
     },
     { 
       title: "Lenovo IdeaPad Gaming 3i (15'', 7)", 
@@ -833,19 +815,9 @@ const PortfolioSection = () => {
     }
   ];
 
-  // Randomize the projects array once when the component mounts
-  const randomizedProjects = useMemo(() => {
-    const shuffled = [...projects];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  }, []);
-
   const filteredProjects = activeTab === "All" 
-    ? randomizedProjects 
-    : randomizedProjects.filter(p => p.category === activeTab);
+    ? projects 
+    : projects.filter(p => p.category === activeTab);
 
   return (
     <section id="portfolio" className="py-12 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto min-h-screen">
